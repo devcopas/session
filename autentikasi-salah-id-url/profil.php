@@ -7,14 +7,18 @@
         <div class="container">
 
             <nav class="main-menu">
-                <a href="list.php">list</a>
-                <a href="konten.php">konten</a>
+                <a href="list.php?user_id=<?= $_GET['user_id']; ?>">list</a>
+                <a href="konten.php?user_id=<?= $_GET['user_id']; ?>">konten</a>
                 <a href="#" class="active">profil</a>
             </nav>
             
             <div class="content">
-                <p class="danger">Anda tidak dapat menagkses halaman ini</p>
-                <a href="login.php" class="btn-login">Login</a>
+				<?php if(isset($_GET['user_id'])) : ?>
+					<p>Ini adalah Halaman Profil</p>
+				<?php else: ?>
+                	<p class="danger">Anda tidak dapat mengakses halaman ini</p>
+                	<a href="login.php" class="btn-login">Login</a>
+				<?php endif; ?>
             </div>
 
         </div>
