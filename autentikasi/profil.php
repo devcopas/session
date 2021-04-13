@@ -3,14 +3,20 @@ session_start();
 
 include 'connection.php';
 
-$user_id 		= $_SESSION['user_id'];
+if (isset($_SESSION['user_id'])) {
+	$user_id 		= $_SESSION['user_id'];
 
-$pdo				= $db->prepare('SELECT * FROM user WHERE id=:user_id');
-$data['user_id']	= $user_id;
-$pdo->execute($data);
+	$pdo				= $db->prepare('SELECT * FROM user WHERE id=:user_id');
+	$data['user_id']	= $user_id;
+	$pdo->execute($data);
 
-$user				= $pdo->fetch(PDO::FETCH_ASSOC);
+	$user				= $pdo->fetch(PDO::FETCH_ASSOC);
+}
 
+// if (!$user_id) {
+// 	header('location: login.php');
+// 	exit();
+// }
 ?>
 
 
