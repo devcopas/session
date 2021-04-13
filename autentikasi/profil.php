@@ -3,15 +3,14 @@ session_start();
 
 include 'connection.php';
 
-if (isset($_SESSION['user_id'])) {
-	$user_id 		= $_SESSION['user_id'];
 
-	$pdo				= $db->prepare('SELECT * FROM user WHERE id=:user_id');
-	$data['user_id']	= $user_id;
-	$pdo->execute($data);
+$user_id 			= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
 
-	$user				= $pdo->fetch(PDO::FETCH_ASSOC);
-}
+$pdo				= $db->prepare('SELECT * FROM user WHERE id=:user_id');
+$data['user_id']	= $user_id;
+$pdo->execute($data);
+
+$user				= $pdo->fetch(PDO::FETCH_ASSOC);
 
 // if (!$user_id) {
 // 	header('location: login.php');
@@ -38,10 +37,9 @@ if (isset($_SESSION['user_id'])) {
 		</nav>
 
 		<div class="content">
-			<?php if (isset($user_id)) : ?>
+			<?php if ($user_id) : ?>
 				<p>User ID: <?= $user['id']; ?></p>
 				<p>Name: <?= $user['name']; ?></p>
-
 			<?php else : ?>
 				<p class="danger">Anda tidak dapat mengakses halaman ini</p>
 				<a href="login.php" class="btn-login">Login</a>
