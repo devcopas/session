@@ -16,6 +16,7 @@ session_start();
 			<a href="#" class="active">list</a>
 			<a href="konten.php">konten</a>
 			<a href="profil.php">profil</a>
+			<a href="logout.php">logout</a>
 		</nav>
 
 		<div class="content">

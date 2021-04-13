@@ -28,6 +28,7 @@ $user				= $pdo->fetch(PDO::FETCH_ASSOC);
 			<a href="list.php">list</a>
 			<a href="konten.php">konten</a>
 			<a href="#" class="active">profil</a>
+			<a href="logout.php">logout</a>
 		</nav>
 
 		<div class="content">
