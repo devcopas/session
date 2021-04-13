@@ -10,7 +10,10 @@ $pdo				= $db->prepare('SELECT * FROM user WHERE id=:user_id');
 $data['user_id']	= $user_id;
 $pdo->execute($data);
 
-$user				= $pdo->fetch(PDO::FETCH_ASSOC);
+
+if ($pdo->rowCount()) {
+	$user = $pdo->fetch(PDO::FETCH_ASSOC);
+}
 
 // if (!$user_id) {
 // 	header('location: login.php');
