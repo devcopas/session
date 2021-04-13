@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <html>
 
 <head>
@@ -9,13 +13,13 @@
 	<div class="container">
 
 		<nav class="main-menu">
-			<a href="list.php?user_id=<?= $_GET['user_id']; ?>">list</a>
+			<a href="list.php">list</a>
 			<a href="#" class="active">konten</a>
-			<a href="profil.php?user_id=<?= $_GET['user_id']; ?>">profil</a>
+			<a href="profil.php">profil</a>
 		</nav>
 
 		<div class="content">
-			<?php if (isset($_GET['user_id'])) : ?>
+			<?php if (isset($_SESSION['user_id'])) : ?>
 				<p>Ini adalah Halaman Konten</p>
 			<?php else : ?>
 				<p class="danger">Anda tidak dapat mengakses halaman ini</p>
