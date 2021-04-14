@@ -9,12 +9,12 @@ $quantity = 1;
 
 
 if ($_SESSION['cart'][$id]) {
-	$quantity = $_SESSION['cart'][$id][$quantity] + 1;
+	$quantity = $_SESSION['cart'][$id]['quantity'] + 1;
 }
 
 $items = [
-	$id = $id,
-	$quantity = $quantity
+	'id' => $id,
+	'quantity' => $quantity
 ];
 
 $_SESSION['cart'][$id] = $items;
