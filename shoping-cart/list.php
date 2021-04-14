@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+// session_destroy();
 include 'connection.php';
 
 $pdo = $db->prepare('SELECT * FROM product');
@@ -8,6 +11,9 @@ if ($pdo->rowCount()) {
 	$products = $pdo->fetchAll(PDO::FETCH_ASSOC);
 }
 
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 ?>
 
 <html>
